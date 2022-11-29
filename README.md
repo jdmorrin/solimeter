@@ -13,7 +13,7 @@ Arduino device that measures hours of direct sunlight
 
 ## Materials
 
-* Solar cell (7 V)
+* Solar cell (5 V; 30 mA)
 * Arduino UNO
 * LCD Display
 * Breadboard
@@ -33,7 +33,7 @@ Aparato de Arduino que mide horas de luz solar directa
 
 ## Materiales
 
-* Celda solar (7 V)
+* Celda solar (5 V; 30 mA)
 * Arduino UNO
 * Monitor LCD
 * Protoboard
