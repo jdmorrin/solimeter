@@ -1,5 +1,8 @@
 /*
   Solimeter project: 
+
+  Circuit: connect + end of of solar cell to pin "A0"
+           connect - end to GND pin
 */
 
 // analog pins
@@ -20,6 +23,7 @@ void loop() {
   input = analogRead(analogIn);
   Serial.print(input); Serial.print("\t");
 
+  // 
   if(input >= 850){
     if(startTime == 0){
       startTime = millis();
