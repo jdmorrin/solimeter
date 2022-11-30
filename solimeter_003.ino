@@ -25,7 +25,7 @@
 // pins
 const int analogIn = A0;
 const int analogOut = 9;
-const int rs = 12, e =11, d7= 2, d6 = 3, d5 = 4, d4 = 5; 
+const int rs = 12, e =11, d7= 5, d6 = 4, d5 = 3, d4 = 2; 
 
 // LCD
 LiquidCrystal lcd(rs, e, d4, d5, d6, d7);
@@ -36,17 +36,17 @@ long elapsedTime = 0;
 long totalTime = 0;
 
 void setup() {
-  lcd.begin(16,1);
+  lcd.begin(16,2);
 //  lcd.print("Hello World!");
   Serial.begin(9600);
 }
 
 void loop() {
+//  lcd.setCursor(0,0);
   input = analogRead(analogIn);
-  Serial.print(input); Serial.print("\t");
-  lcd.print(input); lcd.print("\n");
+  Serial.print("Input pin: "); Serial.print(analogIn); Serial.print("\t"); Serial.print(input); Serial.print("\t");
+//  lcd.print("input: "); lcd.print(input);
 
-  // 
   if(input >= 850){
     if(startTime == 0){
       startTime = millis();
@@ -63,11 +63,23 @@ void loop() {
   }
 
   Serial.println();
+  lcd.setCursor(0,0);
+  lcd.print(elapsedTime);
   
+  lcd.setCursor(0, 1);
+  lcd.print(totalTime);
+  
+  // When the solar cell no longer outputs any voltage, end the loop
   if(input == 0){
     Serial.print("The total time today was: ");
     Serial.print(totalTime);
     Serial.println();
     Serial.end();
+
+    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("Total time today:");
+    lcd.setCursor(0,1);
+    lcd.print(totalTime); lcd.print(" secs");
   }
 }
